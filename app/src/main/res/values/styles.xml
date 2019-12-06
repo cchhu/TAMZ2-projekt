@@ -1,11 +1,24 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
+
+    <style name="Nadpisy">
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/open_sans_condensed_bold</item>
+    </style>
+
+    <style name="Normalni">
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/open_sans</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 
 </resources>
