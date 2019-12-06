@@ -13,6 +13,7 @@
 
     <style name="Nadpisy">
         <item name="android:fontFamily" tools:ignore="NewApi">@font/open_sans_condensed_bold</item>
+        <item name="android:textSize">21sp</item>
     </style>
 
     <style name="Normalni">

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,8 +21,10 @@
         android:background="@color/colorAccent"
         app:popupTheme="@style/Theme.AppCompat.Light"
         app:titleTextColor="@color/colorPrimary"
-        app:titleTextAppearance="@style/Nadpisy"/>
-
+        app:titleTextAppearance="@style/Nadpisy"
+        app:navigationIcon="@mipmap/ic_music"
+        android:paddingLeft="25px"
+        />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -33,16 +34,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/just_playing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Just playing" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/all_songs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="All songs" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/play_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Playlist" />
@@ -50,7 +54,5 @@
     </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
