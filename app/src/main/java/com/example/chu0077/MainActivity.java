@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity{
 
         toolbar=(Toolbar)findViewById(R.id.tool_bar);
         toolbar.setTitle("HUDEBNÍ PŘEHRÁVAČ");
-        setSupportActionBar(toolbar);
-        toolbar.setTitleTextAppearance(this, R.style.BitterTextAppearance);
+       // setSupportActionBar(toolbar);
+        toolbar.setTitleTextAppearance(this, R.style.FontChange);
 
 
         tabLayout=(TabLayout)findViewById(R.id.tab_layout);
@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity{
 
         setUpViewPaper(viewPager);
         tabLayout.setupWithViewPager(viewPager);
-
-
-
     }
 
     private void setUpViewPaper(ViewPager viewPager) {
