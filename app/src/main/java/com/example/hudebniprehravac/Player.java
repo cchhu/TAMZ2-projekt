@@ -35,5 +35,11 @@ public class Player extends AppCompatActivity {
         nextbutt=findViewById(R.id.imageView7);
         prevbutt=findViewById(R.id.imageView8);
 
+        Intent songData=getIntent();
+        songExtraData = songData.getExtras();
+        songFileList=(ArrayList) songExtraData.getParcelableArrayList("songFileList");
+        int position=songExtraData.getInt("position",0);
+
+
     }
 }

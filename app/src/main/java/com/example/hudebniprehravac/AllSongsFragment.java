@@ -64,6 +64,17 @@ public class AllSongsFragment extends Fragment {
             ArrayAdapterSong=new ArrayAdapter<>(getActivity(),R.layout.row,songs);
             ListViewSongs.setAdapter(ArrayAdapterSong);
 
+                ListViewSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent player=new Intent(getActivity(),Player.class);
+
+                        player.putExtra("songFileList",songs);
+                        player.putExtra("position",position);
+                        startActivity(player);
+
+                    }
+                });
 
             }
 
