@@ -69,7 +69,7 @@ public class AllSongsFragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent player=new Intent(getActivity(),Player.class);
 
-                        player.putExtra("songFileList",songs);
+                        player.putExtra("songFileList",FileSongs);
                         player.putExtra("position",position);
                         startActivity(player);
 
