@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class Player extends AppCompatActivity {
 
-    MediaPlayer media;
+    static MediaPlayer media;
     Bundle songExtraData;
     ArrayList<File> songFileList;
     SeekBar seek;
@@ -29,7 +29,7 @@ public class Player extends AppCompatActivity {
     ImageView playbutt;
     ImageView nextbutt;
     ImageView prevbutt;
-
+    int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,7 @@ public class Player extends AppCompatActivity {
         Intent songData = getIntent();
         songExtraData = songData.getExtras();
         songFileList = (ArrayList)songExtraData.getParcelableArrayList("songFileList");
-        int position = songExtraData.getInt("position", 0);
+        position = songExtraData.getInt("position", 0);
         runMusic(position);
 
         playbutt.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +57,34 @@ public class Player extends AppCompatActivity {
                 play();
             }
         });
+
+    nextbutt.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        if (position < songFileList.size() - 1) {
+            position++;
+        } else {
+            position = 0;
+        }
+        runMusic(position);
+    }
+
+});
+    prevbutt.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(position<=0){
+                position=songFileList.size();
+            }
+            else{
+                position--;
+            }
+        runMusic(position);
+        }
+
+    });
+
+
 
     }
 
@@ -82,7 +110,7 @@ public class Player extends AppCompatActivity {
         media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                runMusic(position+1);
+        //        runMusic(position+1);
             }
         });
 
@@ -131,7 +159,6 @@ public class Player extends AppCompatActivity {
                     }
             }
         }).start();
-
 
     }
 
