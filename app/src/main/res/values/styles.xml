@@ -18,7 +18,14 @@
 
     <style name="Normalni">
         <item name="android:fontFamily" tools:ignore="NewApi">@font/open_sans</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="seznam">
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/open_sans</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 

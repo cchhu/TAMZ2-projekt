@@ -51,15 +51,15 @@ public class AllSongsFragment extends Fragment {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse response) {
 
-                //noinspection deprecation
-                FileSongs=findSongs(Environment.getExternalStorageDirectory());
+            //noinspection deprecation
+            FileSongs=findSongs(Environment.getExternalStorageDirectory());
             songs=new String[FileSongs.size()];
 
             for(int i=0;i<FileSongs.size();i++){
                 songs[i]=FileSongs.get(i).getName();
             }
 
-            ArrayAdapterSong=new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,songs);
+            ArrayAdapterSong=new ArrayAdapter<>(getActivity(),R.layout.row,songs);
             ListViewSongs.setAdapter(ArrayAdapterSong);
             }
 
@@ -73,16 +73,13 @@ public class AllSongsFragment extends Fragment {
             token.continuePermissionRequest();
             }
         }).check();
+
         return view;
     }
 
     private ArrayList<File> findSongs(File file){
         ArrayList<File> allSongFiles=new ArrayList<>();
         File [] files=file.listFiles();
-
-        Log.i("TEST","DSADSA"+files);
-
-
         if (files != null) {
             for(File f:files)
             {
@@ -90,6 +87,7 @@ public class AllSongsFragment extends Fragment {
                     allSongFiles.addAll(findSongs(f));
                 }
                 else {
+                    if(f.getName().endsWith(".mp3")||f.getName().endsWith(".mp4a")||f.getName().endsWith(".wav")||f.getName().endsWith(".mp4p")||f.getName().endsWith(".wma"))
                     allSongFiles.add(f);
                 }
             }

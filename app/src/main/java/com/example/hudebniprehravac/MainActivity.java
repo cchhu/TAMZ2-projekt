@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TabItem playlist;
     ViewPager viewpager;
     Pager Pager;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
