@@ -2,10 +2,15 @@ package com.example.hudebniprehravac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -37,30 +42,83 @@ public class Player extends AppCompatActivity {
         nextbutt = findViewById(R.id.imageView7);
         prevbutt = findViewById(R.id.imageView8);
 
+        if(media!=null){
+            media.stop();
+        }
         Intent songData = getIntent();
         songExtraData = songData.getExtras();
         songFileList = (ArrayList)songExtraData.getParcelableArrayList("songFileList");
         int position = songExtraData.getInt("position", 0);
         runMusic(position);
 
+        playbutt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                play();
+            }
+        });
+
     }
 
-    private void runMusic(int position) {
+    private void runMusic(final int position) {
         if (media != null && media.isPlaying()) {
-            media.stop();
+            media.reset();
         }
 
         String name = songFileList.get(position).getName();
         title.setText(name);
         Uri songResourdce = Uri.parse(songFileList.get(position).toString());
-        media = media.create(getApplicationContext(), songResourdce);
+        media = MediaPlayer.create(getApplicationContext(), songResourdce);
 
-        media.start();
+        media.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                seek.setMax(media.getDuration());
+                media.start();
+                playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
+            }
+        });
 
-        if (media.isPlaying()) {
-            playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
-        } else {
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                runMusic(position+1);
+            }
+        });
+
+        seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(fromUser)
+                {
+                    media.seekTo(progress);
+                    seek.setProgress(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+    }
+
+    private void play(){
+        if(media!=null && media.isPlaying())
+        {
+            media.pause();
             playbutt.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+        }
+        else {
+            media.start();
+            playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
         }
     }
 }
