@@ -5,16 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.TableLayout;
 import androidx.appcompat.widget.Toolbar;
-
-
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener;
 
 public class MainActivity extends AppCompatActivity {
 
