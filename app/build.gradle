@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.example.hudebniprehravac"
         minSdkVersion 14
-        targetSdkVersion 29
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -35,4 +35,5 @@ dependencies {
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'androidx.media:media:1.1.0'
+    implementation 'com.karumi:dexter:5.0.0'
 }
