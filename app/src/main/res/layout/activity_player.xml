@@ -26,7 +26,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:fontFamily="@font/open_sans"/>
 
     <SeekBar
         android:id="@+id/seekBar2"

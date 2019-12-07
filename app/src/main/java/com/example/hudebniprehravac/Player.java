@@ -107,6 +107,31 @@ public class Player extends AppCompatActivity {
             }
         });
 
+        @SuppressLint("HandlerLeak") final Handler handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                seek.setProgress(msg.what);
+            }
+        };
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+                while(media!=null)
+                    try{
+                        if(media.isPlaying())
+                        {
+                            Message message=new Message();
+                            message.what = media.getCurrentPosition();
+                            handler.sendMessage(message);
+                            Thread.sleep(5);
+                        }}catch(InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+            }
+        }).start();
+
 
     }
 
