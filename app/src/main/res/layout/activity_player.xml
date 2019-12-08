@@ -84,11 +84,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00:00"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
         app:layout_constraintHorizontal_bias="0.231"
         app:layout_constraintStart_toStartOf="@+id/seekBar2"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2"
-        android:textColor="@color/colorAccent"/>
+        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
     <TextView
         android:id="@+id/durend"
@@ -98,10 +98,32 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="76dp"
         android:text="05:00"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="@+id/seekBar2"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2"
-        app:layout_constraintVertical_bias="0.0"
-        android:textColor="@color/colorAccent"/>
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/rep"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekBar2"
+        app:srcCompat="@drawable/ic_repeat_black_24dp" />
+
+    <ImageView
+        android:id="@+id/random"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toStartOf="@+id/rep"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekBar2"
+        app:srcCompat="@drawable/ic_shuffle_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

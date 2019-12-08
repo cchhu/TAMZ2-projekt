@@ -31,8 +31,13 @@ public class Player extends AppCompatActivity {
     ImageView prevbutt;
     TextView currtime;
     TextView endtime;
-
+    ImageView repeat;
+    boolean repeatsong=false;
+    int currensong;
     int position;
+    ImageView random;
+    boolean randomsongs=false;
+    int x=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,8 @@ public class Player extends AppCompatActivity {
         prevbutt = findViewById(R.id.imageView8);
         currtime=findViewById(R.id.durstart);
         endtime=findViewById(R.id.durend);
+        repeat=findViewById(R.id.rep);
+        random=findViewById(R.id.random);
 
         if(media!=null){
             media.stop();
@@ -54,6 +61,7 @@ public class Player extends AppCompatActivity {
         songExtraData = songData.getExtras();
         songFileList = (ArrayList)songExtraData.getParcelableArrayList("songFileList");
         position = songExtraData.getInt("position", 0);
+
         runMusic(position);
 
         playbutt.setOnClickListener(new View.OnClickListener() {
@@ -89,11 +97,43 @@ public class Player extends AppCompatActivity {
 
     });
 
+    repeat.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            currensong = position;
 
+            if(repeatsong==true)
+            {
+                repeatsong=false;
+                repeat.setImageResource(R.drawable.ic_repeat_black_24dp);
+            }
+            else {
+                repeatsong = true;
+                repeat.setImageResource(R.drawable.ic_repeat_green_24dp);
+            }
+
+        }
+    });
+
+    random.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(randomsongs==true)
+            {
+               randomsongs=false;
+                random.setImageResource(R.drawable.ic_shuffle_black_24dp);
+            }
+            else {
+                randomsongs=true;
+                random.setImageResource(R.drawable.ic_shuffle_green_24dp);
+            }
+        }
+    });
 
     }
 
     private void runMusic(final int position) {
+
         if (media != null && media.isPlaying()) {
             media.reset();
         }
@@ -122,6 +162,23 @@ public class Player extends AppCompatActivity {
         //        runMusic(position+1);
 
                 playbutt.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+
+                if(repeatsong==true && randomsongs==false)
+                {
+                    runMusic(currensong);
+                }
+
+                if(randomsongs==true && repeatsong==false)
+                {
+                    x = (int)(Math.random()*((songFileList.size()-0)+1))+0;
+                    runMusic(x);
+                }
+
+                if(randomsongs==true && repeatsong==true)
+                {
+                    runMusic(currensong);
+                }
+
             }
         });
 
