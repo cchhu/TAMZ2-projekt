@@ -9,15 +9,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 
 public class Player extends AppCompatActivity {
 
@@ -45,7 +44,7 @@ public class Player extends AppCompatActivity {
         setContentView(R.layout.activity_player);
 
         seek = findViewById(R.id.seekBar2);
-        title = findViewById(R.id.songtitle);
+        title = findViewById(R.id.songgtitle);
         playbutt = findViewById(R.id.imageView6);
         nextbutt = findViewById(R.id.imageView7);
         prevbutt = findViewById(R.id.imageView8);
@@ -71,7 +70,8 @@ public class Player extends AppCompatActivity {
             }
         });
 
-    nextbutt.setOnClickListener(new View.OnClickListener() {
+
+        nextbutt.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         if (position < songFileList.size() - 1) {
@@ -181,7 +181,20 @@ public class Player extends AppCompatActivity {
         }
     });
 
+
+
     }
+/*
+    @Override
+    public void onBackPressed(){
+       // media.stop();
+        JustPlayingFragment fragment_obj = (JustPlayingFragment) getSupportFragmentManager().findFragmentById(R.id.songtitle);
+        ((TextView) fragment_obj.getView().findViewById(R.id.songtitle)).setText("test");
+
+     //   finish();
+      //  setContentView(R.layout.fragment_all_songs);
+    }*/
+
 
     private void runMusic(final int position) {
 
@@ -191,6 +204,7 @@ public class Player extends AppCompatActivity {
 
         String name = songFileList.get(position).getName();
         title.setText(name);
+        Global.titname=name;
         Uri songResourdce = Uri.parse(songFileList.get(position).toString());
         media = MediaPlayer.create(getApplicationContext(), songResourdce);
 
@@ -305,5 +319,6 @@ public class Player extends AppCompatActivity {
         timerLabel=timerLabel+sec;
         return timerLabel;
     }
+
 }
 

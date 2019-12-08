@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
   //  TabItem playlist;
     ViewPager viewpager;
     Pager Pager;
-
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,5 +85,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }
