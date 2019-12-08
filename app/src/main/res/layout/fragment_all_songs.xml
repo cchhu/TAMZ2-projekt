@@ -6,10 +6,17 @@
     tools:context=".AllSongsFragment">
 
     <!-- TODO: Update blank fragment layout -->/*
- <ListView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:id="@+id/ListViewSongs"
-     android:theme="@style/seznam"/>
+
+    <ListView
+        android:id="@+id/ListViewSongs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:drawSelectorOnTop="false"
+        android:headerDividersEnabled="false"
+        android:paddingLeft="20px"
+        android:paddingRight="20px"
+        android:theme="@style/seznam"
+        android:footerDividersEnabled="false"/>
 
 </FrameLayout>

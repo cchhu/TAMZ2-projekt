@@ -4,6 +4,8 @@
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:id="@+id/row1"
     android:textColor="@color/colorAccent"
-    android:fontFamily="@font/open_sans">
+    android:fontFamily="@font/open_sans"
+    android:gravity="center_vertical"
+    >
 
 </TextView>
