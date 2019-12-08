@@ -29,6 +29,9 @@ public class Player extends AppCompatActivity {
     ImageView playbutt;
     ImageView nextbutt;
     ImageView prevbutt;
+    TextView currtime;
+    TextView endtime;
+
     int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public class Player extends AppCompatActivity {
         playbutt = findViewById(R.id.imageView6);
         nextbutt = findViewById(R.id.imageView7);
         prevbutt = findViewById(R.id.imageView8);
+        currtime=findViewById(R.id.durstart);
+        endtime=findViewById(R.id.durend);
 
         if(media!=null){
             media.stop();
@@ -102,6 +107,10 @@ public class Player extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 seek.setMax(media.getDuration());
+
+                String tt=createTimer(media.getDuration());
+                endtime.setText(tt);
+
                 media.start();
                 playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
             }
@@ -111,6 +120,8 @@ public class Player extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mp) {
         //        runMusic(position+1);
+
+                playbutt.setImageResource(R.drawable.ic_play_arrow_black_24dp);
             }
         });
 
@@ -138,6 +149,8 @@ public class Player extends AppCompatActivity {
         @SuppressLint("HandlerLeak") final Handler handler=new Handler(){
             @Override
             public void handleMessage(Message msg){
+                int curpos=msg.what;
+                currtime.setText(createTimer(curpos));
                 seek.setProgress(msg.what);
             }
         };
@@ -172,6 +185,17 @@ public class Player extends AppCompatActivity {
             media.start();
             playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
         }
+    }
+
+    public String createTimer(int duration){
+        String timerLabel="";
+        int min=duration/1000/60;
+        int sec=duration/1000%60;
+
+        timerLabel=timerLabel+min+":";
+        if(sec<10)timerLabel=timerLabel+"0";
+        timerLabel=timerLabel+sec;
+        return timerLabel;
     }
 }
 

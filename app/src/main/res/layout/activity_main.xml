@@ -45,11 +45,6 @@
             android:layout_height="wrap_content"
             android:text="All songs" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/play_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Playlist" />
 
     </com.google.android.material.tabs.TabLayout>
 

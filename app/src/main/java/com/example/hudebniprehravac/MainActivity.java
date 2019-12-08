@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tablayout;
     TabItem actual;
     TabItem all;
-    TabItem playlist;
+  //  TabItem playlist;
     ViewPager viewpager;
     Pager Pager;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tablayout=(TabLayout)findViewById(R.id.tabs);
         actual=(TabItem)findViewById(R.id.just_playing);
         all=(TabItem)findViewById(R.id.all_songs);
-        playlist=(TabItem)findViewById(R.id.play_list);
+        //playlist=(TabItem)findViewById(R.id.play_list);
         viewpager=(ViewPager)findViewById(R.id.view_pager);
 
         Pager=new Pager(getSupportFragmentManager(),tablayout.getTabCount());
@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             {
                 case 0: return new JustPlayingFragment();
                 case 1: return new AllSongsFragment();
-                case 2: return new PlaylistFragment();
                 default: break;
             }
             return null;
