@@ -79,7 +79,30 @@ public class Player extends AppCompatActivity {
         } else {
             position = 0;
         }
-        runMusic(position);
+        if(repeatsong==true && randomsongs==false)
+        {
+            currensong=position;
+            runMusic(currensong);
+        }
+        if(repeatsong==false && randomsongs==false) {
+            runMusic(position);
+        }
+
+        if(randomsongs==true && repeatsong==true)
+        {
+            x = (int)(Math.random()*((songFileList.size()-1)+1))+1;
+            currensong=x;
+            runMusic(currensong);
+        }
+
+        if(randomsongs==true && repeatsong==false)
+        {
+            x = (int)(Math.random()*((songFileList.size()-1)+1))+1;
+            currensong=x;
+            runMusic(currensong);
+        }
+
+      //  else { runMusic(position);}
     }
 
 });
@@ -88,12 +111,40 @@ public class Player extends AppCompatActivity {
         public void onClick(View v) {
             if(position<=0){
                 position=songFileList.size();
+
             }
             else{
                 position--;
+
             }
-        runMusic(position);
+        if(repeatsong==true && randomsongs==false)
+        {
+            currensong=position;
+            runMusic(currensong);
         }
+        if(repeatsong==false && randomsongs==false) {
+            runMusic(position);
+        }
+
+        if(randomsongs==true && repeatsong==true)
+        {
+            x = (int)(Math.random()*((songFileList.size()-1)+1))+1;
+            currensong=x;
+            runMusic(currensong);
+        }
+
+        if(randomsongs==true && repeatsong==false)
+        {
+            x = (int)(Math.random()*((songFileList.size()-1)+1))+1;
+            currensong=x;
+            runMusic(currensong);
+        }
+
+      //  else { runMusic(position);}
+
+        }
+
+
 
     });
 
@@ -170,7 +221,7 @@ public class Player extends AppCompatActivity {
 
                 if(randomsongs==true && repeatsong==false)
                 {
-                    x = (int)(Math.random()*((songFileList.size()-0)+1))+0;
+                    x = (int)(Math.random()*((songFileList.size()-1)+1))+1;
                     runMusic(x);
                 }
 
@@ -222,7 +273,7 @@ public class Player extends AppCompatActivity {
                             Message message=new Message();
                             message.what = media.getCurrentPosition();
                             handler.sendMessage(message);
-                            Thread.sleep(5);
+                            Thread.sleep(2);
                         }}catch(InterruptedException e)
                     {
                         e.printStackTrace();
