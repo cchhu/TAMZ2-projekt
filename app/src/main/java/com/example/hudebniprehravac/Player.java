@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class Player extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_player);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         seek = findViewById(R.id.seekBar2);
         title = findViewById(R.id.songgtitle);
@@ -213,9 +215,10 @@ public class Player extends AppCompatActivity {
             public void onPrepared(MediaPlayer mp) {
                 seek.setMax(media.getDuration());
 
+
                 String tt=createTimer(media.getDuration());
                 endtime.setText(tt);
-
+                Global.endduration=tt;
                 media.start();
                 playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
             }
@@ -273,6 +276,7 @@ public class Player extends AppCompatActivity {
             public void handleMessage(Message msg){
                 int curpos=msg.what;
                 currtime.setText(createTimer(curpos));
+                Global.actualduration=(createTimer(curpos));
                 seek.setProgress(msg.what);
             }
         };

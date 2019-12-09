@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.provider.Settings;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,24 +49,14 @@ public class JustPlayingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.activity_playercopy, container, false);
+        View view = inflater.inflate(R.layout.fragment_just_playing, container, false);
         super.onViewCreated(view, savedInstanceState);
 
 
-        seek = (SeekBar)view.findViewById(R.id.seekBar2);
         title = view.findViewById(R.id.songgtitle);
-        playbutt = view.findViewById(R.id.imageView6);
-        nextbutt = view.findViewById(R.id.imageView7);
-        prevbutt = view.findViewById(R.id.imageView8);
-        currtime=view.findViewById(R.id.durstart);
-        endtime=view.findViewById(R.id.durend);
-        repeat=view.findViewById(R.id.rep);
-        random=view.findViewById(R.id.random);
 
         if(media==null){
             title.setText("NO MUSIC PLAYS!");
-            currtime.setVisibility(View.GONE);
-            endtime.setVisibility(View.GONE);
 
           //  media.stop();
         }
@@ -77,13 +67,21 @@ public class JustPlayingFragment extends Fragment {
         }
         return view;
 
+
+
     }
+
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+
         }
     }
+
+
+
 }
 
