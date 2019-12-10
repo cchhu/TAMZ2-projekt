@@ -112,7 +112,7 @@ public class Player extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(position<=0){
-                position=songFileList.size();
+                position=songFileList.size()-1;
 
             }
             else{
