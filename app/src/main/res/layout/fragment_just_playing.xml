@@ -17,6 +17,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mus" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="202dp"
+        android:layout_height="126dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/songgtitle"
+        app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+
     <TextView
         android:id="@+id/songgtitle"
         android:layout_width="wrap_content"
@@ -32,5 +43,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/visualizer"
+        android:layout_width="320dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="156dp"
+        android:src="@drawable/vis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></pl.droidsonroids.gif.GifImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,10 @@ package com.example.hudebniprehravac;
 
 
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifImageView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -26,7 +30,6 @@ public class JustPlayingFragment extends Fragment {
     public JustPlayingFragment() {
         // Required empty public constructor
     }
-    static MediaPlayer media;
     Bundle songExtraData;
     ArrayList<File> songFileList;
     SeekBar seek;
@@ -37,13 +40,16 @@ public class JustPlayingFragment extends Fragment {
     TextView currtime;
     TextView endtime;
     ImageView repeat;
+    ImageView musfoto;
     boolean repeatsong=false;
     int currensong;
     int position;
     ImageView random;
     boolean randomsongs=false;
     int x=0;
+    GifImageView visual;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,21 +60,32 @@ public class JustPlayingFragment extends Fragment {
 
 
         title = view.findViewById(R.id.songgtitle);
-
-        if(media==null){
+        visual=view.findViewById(R.id.visualizer);
+        musfoto=view.findViewById(R.id.imageView3);
+        playbutt=view.findViewById(R.id.imageView);
+        if(Global.media==null){
             title.setText("NO MUSIC PLAYS!");
-
+            visual.setVisibility(View.GONE);
           //  media.stop();
         }
 
         if(Global.titname!="")
         {
             title.setText(Global.titname);
+            musfoto.setImageAlpha(55);
+            visual.setVisibility(View.VISIBLE);
+        }
+
+        if(Global.media!=null && Global.media.isPlaying())
+        {
+                playbutt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Global.media.pause();
+                    }
+                });
         }
         return view;
-
-
-
     }
 
 

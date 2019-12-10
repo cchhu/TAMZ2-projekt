@@ -209,7 +209,7 @@ public class Player extends AppCompatActivity {
         Global.titname=name;
         Uri songResourdce = Uri.parse(songFileList.get(position).toString());
         media = MediaPlayer.create(getApplicationContext(), songResourdce);
-
+        Global.media=media;
         media.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -230,6 +230,7 @@ public class Player extends AppCompatActivity {
         //        runMusic(position+1);
 
                 playbutt.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                Global.titname="";
 
                 if(repeatsong==true && randomsongs==false)
                 {
