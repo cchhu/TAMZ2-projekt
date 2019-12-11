@@ -183,22 +183,11 @@ public class Player extends AppCompatActivity {
         }
     });
 
-
-
     }
-/*
-    @Override
-    public void onBackPressed(){
-       // media.stop();
-        JustPlayingFragment fragment_obj = (JustPlayingFragment) getSupportFragmentManager().findFragmentById(R.id.songtitle);
-        ((TextView) fragment_obj.getView().findViewById(R.id.songtitle)).setText("test");
-
-     //   finish();
-      //  setContentView(R.layout.fragment_all_songs);
-    }*/
-
 
     private void runMusic(final int position) {
+
+
 
         if (media != null && media.isPlaying()) {
             media.reset();
@@ -214,11 +203,8 @@ public class Player extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 seek.setMax(media.getDuration());
-
-
                 String tt=createTimer(media.getDuration());
                 endtime.setText(tt);
-                Global.endduration=tt;
                 media.start();
                 playbutt.setImageResource(R.drawable.ic_pause_black_24dp);
             }
@@ -231,6 +217,7 @@ public class Player extends AppCompatActivity {
 
                 playbutt.setImageResource(R.drawable.ic_play_arrow_black_24dp);
                 Global.titname="";
+                Global.media=null;
 
                 if(repeatsong==true && randomsongs==false)
                 {
@@ -277,8 +264,7 @@ public class Player extends AppCompatActivity {
             public void handleMessage(Message msg){
                 int curpos=msg.what;
                 currtime.setText(createTimer(curpos));
-                Global.actualduration=(createTimer(curpos));
-                seek.setProgress(msg.what);
+                        seek.setProgress(msg.what);
             }
         };
 
