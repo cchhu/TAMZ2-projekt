@@ -9,4 +9,4 @@ Popis commitu:
 5. TabBar(Pager) repair
 6. Fragment for songs news
 7. Permissions, listview for files
-8. Selecting only audios from files, Song Fragment layout updated
+8. Selecting only audio from files, Song Fragment layout updated
